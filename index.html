@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    
+    <style>
+
+
+         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+        *{
+          font-family: 'Pretendard';
+          font-weight: 600;
+          margin:0;
+          padding:0;
+          box-sizing: border-box;
+          
+        }
+        .back{
+            width:100vw;
+            height: 100vh;
+            display: flex;
+            background-image: url("1.png");
+            background-size: cover;
+            justify-content: center; /* 수평 중앙 정렬 */
+            align-items: center; /* 수직 중앙 정렬 */
+        }
+
+        .center{
+            flex-direction: row;
+        }
+
+        .button{
+            margin-top:10px;
+            display:flex;
+            justify-content: center;            
+        }
+
+        #main{
+            width: 340px;
+            height: 100px;
+        }
+
+        #enter{
+            background-color: rgba(255,255,255,0.2);
+            outline: none; /* 버튼의 외각선 제거 */
+            border: none;  /* 버튼의 테두리 제거 (필요한 경우) */
+            color:white;
+            width: 100px;
+            height:30px;
+            border-radius:  100px;
+        }
+        
+        #enter:hover{
+            background-image: url("3.jpg");
+
+        }
+
+        .tape{
+            position: fixed;
+            top:0px;
+            width:100vw;
+            background-color: #E34545;
+            height: 40px;
+            display:flex;
+            align-items: center;
+            color:white;
+            overflow: hidden; /* 콘텐츠가 영역을 넘지 않도록 */
+            white-space: nowrap; /* 텍스트가 줄 바꿈되지 않게 */
+        }
+        .tape p {
+        display: inline-block;
+        padding-left:40%;
+        animation: moveText 20s linear infinite; /* 텍스트 이동 애니메이션 */
+         }
+
+        
+        @keyframes moveText {
+        0% {
+            transform: translateX(100%); /* 화면 오른쪽에서 시작 */
+        }
+        100% {
+            transform: translateX(-100%); /* 화면 왼쪽으로 이동 */
+        }
+        }
+        
+        .tape2{
+            position: fixed;
+            bottom:0px;
+            width:100vw;
+            background-color: #E34545;
+            height: 40px;
+            display:flex;
+            align-items: center;
+            color:white;
+            overflow: hidden; /* 콘텐츠가 영역을 넘지 않도록 */
+            white-space: nowrap; /* 텍스트가 줄 바꿈되지 않게 */
+        }
+        .tape2 p {
+        display: inline-block;
+        padding-left:10%;
+        animation: moveText 20s linear infinite; /* 텍스트 이동 애니메이션 */
+         }
+         a{
+            text-decoration: none;
+         }
+       
+    </style>
+</head>
+<body>
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mp3"> <!-- 이곳에 원하는 MP3 파일 경로를 넣어주세요 -->
+    </audio>
+    
+    <div class="tape"><p> 이영재  박재민  김소리  신주희  권유빈  고서영  이지민  윤재익  박혜성  구예진  ⭐메⭐리⭐크⭐리⭐스⭐마⭐스⭐~⭐ </p></div>
+    <div class="back">
+        <div class="center">
+            <img src="2.png" alt="x" id="main">
+            <p style="text-align: center; color:white;">2024년 수고한 당신에게 주는 선물!</p>
+           <a href="index2.html"> <div class="button"><button id="enter">가자!</button></div> </a>
+        </div>
+    </div>
+    <div class="tape2"><p>2024년 올해도 수고많았어요! 앞으로 꽃길만 걸어요:> 다음 2025년 한해도 행복하길~~!~!~!~ 김소리 현장실습 화이팅! </p></div>
+
+    <script>
+
+window.onload = function() {
+            // 오디오 요소 가져
+            const audio = document.getElementById('music');
+            audio.play();  // 페이지 로드 시 자동으로 음악 재생
+            audio.volume = 0.1;
+
+            // .tape 안의 p 요소들을 가져옵니다.
+            const tapes = document.querySelectorAll('.tape p');
+            const speed = 2; // 텍스트 이동 속도 (값을 변경하여 속도를 조절)
+
+            function moveText() {
+                tapes.forEach(tape => {
+                    let currentLeft = parseFloat(tape.style.left || '100%'); // 현재 위치
+
+                    // 위치를 왼쪽으로 이동시키고, 화면을 벗어나면 다시 오른쪽으로 배치
+                    if (currentLeft <= -tape.offsetWidth) {
+                        tape.style.left = '100%'; // 텍스트가 화면 밖으로 나가면 다시 오른쪽으로
+                    } else {
+                        tape.style.left = `${currentLeft - speed}%`; // 텍스트 왼쪽으로 이동
+                    }
+                });
+
+                requestAnimationFrame(moveText); // 애니메이션 프레임을 요청하여 계속 반복
+            }
+
+            moveText(); // 텍스트 애니메이션 시작
+        };
+    </script>
+</body>
+</html>

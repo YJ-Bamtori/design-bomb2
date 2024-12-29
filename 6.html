@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+    <style>
+         @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+            @font-face {
+        font-family: 'Mungyeong-Gamhong-Apple';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-2@1.0/Mungyeong-Gamhong-Apple.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+}
+        *{
+          font-family: 'Mungyeong-Gamhong-Apple';
+          font-weight: 400;
+          margin:0;
+          padding:0;
+          box-sizing: border-box;
+          color: #EACB64;
+
+          
+        }
+        html, body{
+            overflow: hidden; /* 스크롤 비활성화 */
+
+        }
+        .back{
+            width:100vw;
+            height: 100vh;
+            display: flex;
+            background-image: url("1.png");
+            background-size: cover;
+            justify-content: center; /* 수평 중앙 정렬 */
+            align-items: center; /* 수직 중앙 정렬 */
+            overflow: hidden; /* 스크롤 비활성화 */
+
+        }
+
+        .center{
+            flex-direction: row;
+            text-align: center;
+
+        }
+
+        .center p{
+            font-size: 32px;
+        }
+
+        #screen{
+            font-weight: 100;
+            font-size: 16px;
+            padding:10px 30px;
+            color: #EACB64;
+            border-radius: 5px;
+            border: 1px solid #EACB64;
+            background-color: rgba(0,0,0,0);
+
+         }
+         #screen:hover{
+        
+            color: #3D9071;
+            border-radius: 5px;
+            border: 1px solid #3D9071;
+            background-color: rgba(0,0,0,0);
+
+         }
+         
+         button{
+            background-color: none;
+         }
+
+         #pimg{
+            transform: translateX(500%);
+            overflow: hidden;
+            transition: all 1s ease-in-out;
+         }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="back">
+        <div class="center">
+            <p>고서영님 축하드립니다☆</p>
+                <img id="pimg" src="p6.png">
+                <div id="btncontainer">
+                <button id="screen">스크린샷 찍기</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+window.onload = function() {
+           
+
+
+
+           
+
+        $("#pimg").css("transform", "translateX(0%)");
+
+
+            document.getElementById("screen").addEventListener("click", function () {
+            let link = document.createElement('a');
+            link.href = 'x6.png'; // 다운로드할 이미지 경로
+            link.download = 'congratulations.png'; // 다운로드될 파일 이름
+            link.click();
+        });
+
+
+        };
+
+
+    </script>
+</body>
+</html>
